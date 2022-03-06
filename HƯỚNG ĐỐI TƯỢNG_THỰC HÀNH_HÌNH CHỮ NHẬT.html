@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HÌNH CHỮ NHẬT</title>
+</head>
+<body>
+<canvas id="myCanvas" width="300px" height="150px" style="border:1px solid #d3d3d3;"></canvas>
+<script>
+    function  rectangle(width,height){
+        this.width = width;
+        this.height = height;
+        this.getarea = function(){
+            return this.height*this.width;
+        }
+        this.getperimeter = function(){
+            return 2*(width+height);
+        }
+    }
+    let rectang = new rectangle(10,15);
+    alert('chu vi ='+rectang.getperimeter());
+    alert('diện tích ='+rectang.getarea());
+    let c = document.getElementById('myCanvas');
+    let ctx = c.getContext('2d');
+    ctx.fillStyle='#fa4b2a';
+    ctx.fillRect(25,25,250,100);
+</script>
+</body>
+</html>
