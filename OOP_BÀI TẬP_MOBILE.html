@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MOBILE</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>phone1</td>
+        <td>phone2</td>
+    </tr>
+    <tr>
+        <td>
+            <input id="input1" type="text">
+            <button id="send1" onclick="senMess12()">gửi tin nhắn</button>
+        </td>
+        <td>
+        <input id="input2" type="text">
+        <button id="send2" onclick="senMess21()">gửi tin nhắn</button>
+        </td>
+    </tr>
+    <tr>
+        <td id="inboxphone1">hộp thư đến phone1</td>
+        <td id="inboxphone2">hộp thứ đến phone2</td>
+    </tr>
+</table>
+
+<SCRIPT>
+    class mobile{
+        constructor(_name) {
+            this.name = _name;
+            this.pin = 100;
+            this.tinDangsoan = '';
+            this.hopThuDen = [];
+            this.hopThuDi = [];
+            this.tatMo = true;
+        }
+        trangthai(){
+            return this.tatMo;
+            this.pin--;
+        }
+        onoff(){
+            this.tatMo = !this.tatMo;
+            this.pin--;
+        }
+        soanTinNhan(text){
+            if (this.tatMo){
+                this.tinDangsoan = text;
+                this.pin--;
+            }
+        }
+        guiTinNhan(phone){
+            if (this.tatMo){
+                phone.hopThuDen.push(this.tinDangsoan);
+                this.hopThuDi.push(this.tinDangsoan);
+                this.hopThuDi = '';
+                this.pin--;
+            }
+        }
+        gethopThuDen(){
+            if (this.tatMo){
+                return this.hopThuDen;
+                this.pin--;
+            }
+        }
+        gethopThuDi(){
+            if (this.tatMo){
+                return this.hopThuDi;
+                this.pin--;
+            }
+        }
+    }
+    let phone1 = new mobile('hung');
+    let phone2 = new mobile('tunBeo');
+    function senMess12(){
+        let value = document.getElementById('input1').value;
+        phone1.soanTinNhan(value);
+        phone1.guiTinNhan(phone2);
+        let inboxphone2 = phone2.hopThuDen.join('-');
+        document.getElementById('inboxphone2').innerHTML = inboxphone2
+    }
+    function senMess21(){
+        let value = document.getElementById('input2').value;
+        phone2.soanTinNhan(value);
+        phone2.guiTinNhan(phone1);
+        let inboxphone1 = phone1.hopThuDen.join('-');
+        document.getElementById('inboxphone1').innerHTML = inboxphone1
+    }
+</SCRIPT>
+</body>
+</html>
