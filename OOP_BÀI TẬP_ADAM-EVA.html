@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ADAM-EVA</title>
+</head>
+<body>
+<script>
+    let apple = function (){
+        this.setWeight = function (weight){
+            this.weight = weight;
+        }
+        this.getWeight = function (){
+            return this.weight
+        }
+        this.isEmpty = function (){
+            if (this.weight>0){
+                return  true;
+            }else {
+                return false;
+            }
+        }
+        this.appleGiam = function (){
+            if (this.isEmpty()){
+                this.weight--;
+            }
+        }
+    }
+    class human {
+        constructor(name,gender,weight) {
+            this.name = name;
+            this.gender = gender;
+            this.weight = weight;
+        }
+        say(string){
+            return  string;
+        }
+        check(apple){
+            return apple.isEmpty()
+        }
+        aetApple(apple,count){
+            this.count = count
+            apple.appleGiam();
+            count++
+        }
+        getName(){
+            return this.name;
+        }
+        setName(_name){
+            this.name = _name;
+        }
+        getWeight(){
+            return this.weight;
+        }
+        setWeight(){
+            this.weight + this.aetApple.count
+        }
+    }
+    let adammm = new human(adam,nam,100);
+    let evaaa = new human(eva,nu,50);
+    evaaa.aetApple(apple(),0)
+    document.write()
+</script>
+</body>
+</html>
