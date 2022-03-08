@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MÈO BẮT CHUỘT</title>
+</head>
+<style>
+    table tr td th {
+        border: blue 1px solid;
+    }
+</style>
+<body>
+<table>
+    <tr>
+        <td>Mèo<br><span id="inra1"></span></td>
+        <td>Chuột<br><span id="inra2"></span></td>
+    </tr>
+    <tr>
+        <td><button onclick="meoBatChuot()">Mèo bắt chuột</button></td>
+    </tr>
+    <tr>
+        <td><button onclick="meoAnChuot()">Mèo ăn chuột</button></td>
+    </tr>
+</table>
+<SCRIPT>
+    class Mouse{
+        constructor(name,weight,speed,sound) {
+            this.name = name;
+            this.weight = weight;
+            this.speed = speed;
+            this.status = true;
+            this.sound = sound;
+        }
+        getWeight(){
+            return this.weight;
+        }
+        getLiving(){
+            return this.status;
+        }
+        getRatInfo(){
+            return 'weight = ' + this.weight + '<br>' + 'speed = ' + this.speed + '<br>' + ' status : ' + this.status;
+        }
+        setliving(){
+            this.status= !this.status
+        }
+        setWeight(){
+            if (this.status){
+                this.weight ;
+            }else {
+                this.weight = 0;
+            }
+        }
+
+    }
+    class Cat {
+        constructor(name, weight, speed, sound) {
+            this.name = name;
+            this.weight = weight;
+            this.maxSpeed = speed;
+            this.sound = sound;
+        }
+        getCatInfo() {
+            return 'weight = ' + this.weight + '<br>' + 'speed = ' + this.maxSpeed+ '<br>'+'...';
+        }
+        catch(rat){
+            if (this.maxSpeed >= rat.speed)
+            alert('mèo '+this.name+' đã bắt được chuột '+rat.name)
+        }
+        eat(rat){
+            alert('mèo '+this.name+' đã ăn chuột '+ rat.name);
+            rat.status = false;
+            this.weight += rat.weight;
+        }
+    }
+    let cat1 = new Cat('hihi',30,40,'meo meo');
+    let rat1 = new Mouse('bibi',3,20,'chit');
+    function info(){
+        document.getElementById('inra1').innerHTML = cat1.getCatInfo()
+        document.getElementById('inra2').innerHTML = rat1.getRatInfo()
+    }
+    info()
+    function meoBatChuot(){
+        cat1.catch(rat1);
+        info()
+    }
+    function meoAnChuot(){
+        cat1.eat(rat1);
+        info()
+    }
+
+</SCRIPT>
+</body>
+</html>
