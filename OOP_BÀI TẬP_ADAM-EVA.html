@@ -2,64 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ADAM-EVA</title>
+    <title>Title</title>
 </head>
 <body>
+
 <script>
-    let apple = function (){
-        this.setWeight = function (weight){
-            this.weight = weight;
-        }
-        this.getWeight = function (){
-            return this.weight
-        }
-        this.isEmpty = function (){
-            if (this.weight>0){
-                return  true;
-            }else {
-                return false;
-            }
-        }
-        this.appleGiam = function (){
-            if (this.isEmpty()){
-                this.weight--;
-            }
-        }
+  class Apple{
+    constructor() {
+      this.weight = 10;
     }
-    class human {
-        constructor(name,gender,weight) {
-            this.name = name;
-            this.gender = gender;
-            this.weight = weight;
-        }
-        say(string){
-            return  string;
-        }
-        check(apple){
-            return apple.isEmpty()
-        }
-        aetApple(apple,count){
-            this.count = count
-            apple.appleGiam();
-            count++
-        }
-        getName(){
-            return this.name;
-        }
-        setName(_name){
-            this.name = _name;
-        }
-        getWeight(){
-            return this.weight;
-        }
-        setWeight(){
-            this.weight + this.aetApple.count
-        }
+    getWeight(){
+      return this.weight;
     }
-    let adammm = new human(adam,nam,100);
-    let evaaa = new human(eva,nu,50);
-    evaaa.aetApple(apple(),0)
-    document.write()
+    decrease(){
+    this.weight--
+    }
+  }
+  class Human{
+    constructor(name,gender,weight) {
+      this.name = name;
+      this.gender = gender;
+      this.weight = weight;
+    }
+    say(text){
+      alert(text);
+    }
+    eat(apple){
+      if (this.check(apple)){
+        this.weight++;
+        apple.decrease();
+      }
+    }
+    check(apple){
+      return apple.getWeight()>0
+    }
+  }
+  let adamm = new Human(adam,true,90);
+  let evaa  = new Human(eva,false,50);
+  let apple = new Apple();
+
 </script>
 </body>
 </html>
