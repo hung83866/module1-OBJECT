@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>REMOTE TIVI</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>RIMOTE<br><span id="inra1"></span></td>
+        <td>TIVI1<br><span id="inra2"></span></td>
+        <td STYLE="width: 30px"></td>
+        <td>TIVI2<br><span id="inra3"></span></td>
+
+    </tr>
+    <tr>
+        <td><button onclick="tatMoTV1()">BẬT TĂT TIVI</button></td>
+        <td><button onclick="changeTV1()">BẬT/TẮT TV1</button></td>
+        <td></td>
+        <td><button onclick="changeTV2()">BẬT/TẮT TV2</button></td>
+    </tr>
+    <tr>
+        <td>
+        <button onclick="changeChannel()"> channel </button>
+        </td>
+    </tr>
+    <tr>
+        <td><button onclick="changeVolumee()">VOLUME</button></td>
+    </tr>
+</table>
+<script>
+    class Tivi{
+        constructor(channel,volume,status) {
+            this.channel = channel;
+            this.volume = volume;
+            this.status = status;
+        }
+        getTiviInfo(){
+            return 'channel : '+ this.channel +'<br>' + 'volume :' + this.volume +'<br>'+ 'status :' + this.status;
+        }
+        setChannel(newChannel){
+            this.channel = newChannel;
+        }
+        setVolume(newVolume){
+            this.volume = newVolume;
+        }
+        turnOnOff(){
+            this.status = !this.status;
+        }
+    }
+    class Remote{
+        constructor(code,tivi) {
+            this.code = code;
+            this.tivi = tivi
+            }
+        setTivi(_tivi){
+            this.tivi = _tivi;
+        }
+        changeChannel(newChannel){
+            this.tivi.setChannel(newChannel);
+        }
+        changeVolume(newVolume){
+            this.tivi.setVolume(newVolume);
+        }
+        turnOnOffTV(){
+            this.tivi.turnOnOff();
+        }
+    }
+    let tivi1 = new Tivi(0,15,true);
+    let tivi2 = new Tivi(0,19,false);
+    let rm1 = new Remote('rmt1',tivi1);
+    function output(){
+        document.getElementById('inra2').innerHTML = tivi1.getTiviInfo();
+        document.getElementById('inra3').innerHTML = tivi2.getTiviInfo();
+    }
+    output()
+    function tatMoTV1(){
+        rm1.turnOnOffTV();
+        output();
+    }
+    function changeTV2(){
+        rm1.setTivi(tivi2);
+        tatMoTV1();
+    }
+    function changeTV1(){
+        rm1.setTivi(tivi1);
+        tatMoTV1();
+    }
+    function changeChannel(){
+        rm1.changeChannel(prompt('channel'));
+        output()
+    }
+
+
+    function changeVolumee(){
+        rm1.changeVolume(prompt('nhập volume'));
+        output()
+    }
+
+</script>
+</body>
+</html>
