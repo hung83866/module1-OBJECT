@@ -13,10 +13,13 @@
 <table>
     <tr>
         <td>Mèo<br><span id="inra1"></span></td>
-        <td>Chuột<br><span id="inra2"></span></td>
+        <td>Chuột micky<br><span id="inra2"></span></td>
+        <td>Chuột jery<br><span id="inra3"></span></td>
+
     </tr>
     <tr>
-        <td><button onclick="meoBatChuot()">Mèo bắt chuột</button></td>
+        <td><button onclick="meoBatChuot1()">Mèo bắt chuột 1</button></td>
+        <td><button onclick="meoBatChuot2()">Mèo bắt chuột 2</button></td>
     </tr>
     <tr>
         <td><button onclick="meoAnChuot()">Mèo ăn chuột</button></td>
@@ -65,6 +68,8 @@
         catch(rat){
             if (this.maxSpeed >= rat.speed)
             alert('mèo '+this.name+' đã bắt được chuột '+rat.name)
+            else
+                alert('quá chậm, cần luyện tập thêm nhé mèo!')
         }
         eat(rat){
             alert('mèo '+this.name+' đã ăn chuột '+ rat.name);
@@ -72,15 +77,21 @@
             this.weight += rat.weight;
         }
     }
-    let cat1 = new Cat('hihi',30,40,'meo meo');
-    let rat1 = new Mouse('bibi',3,20,'chit');
+    let cat1 = new Cat('hihi',15,25,'meo meo');
+    let rat1 = new Mouse('bibi',5,20,'chit');
+    let rat2 = new Mouse('bibi',3,30,'chit');
     function info(){
-        document.getElementById('inra1').innerHTML = cat1.getCatInfo()
-        document.getElementById('inra2').innerHTML = rat1.getRatInfo()
+        document.getElementById('inra1').innerHTML = cat1.getCatInfo();
+        document.getElementById('inra2').innerHTML = rat1.getRatInfo();
+        document.getElementById('inra3').innerHTML = rat2.getRatInfo();
     }
     info()
-    function meoBatChuot(){
+    function meoBatChuot1(){
         cat1.catch(rat1);
+        info()
+    }
+    function meoBatChuot2(){
+        cat1.catch(rat2);
         info()
     }
     function meoAnChuot(){
