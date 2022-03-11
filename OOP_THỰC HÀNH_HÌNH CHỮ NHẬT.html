@@ -16,14 +16,17 @@
         this.getperimeter = function(){
             return 2*(width+height);
         }
+        this.render{
+            let c = document.getElementById('myCanvas');
+            let ctx = c.getContext('2d');
+            ctx.fillStyle='#fa4b2a';
+            ctx.fillRect(25,25,this.width,this.height);
+        }
     }
     let rectang = new rectangle(10,15);
     alert('chu vi ='+rectang.getperimeter());
     alert('diện tích ='+rectang.getarea());
-    let c = document.getElementById('myCanvas');
-    let ctx = c.getContext('2d');
-    ctx.fillStyle='#fa4b2a';
-    ctx.fillRect(25,25,250,100);
+
 </script>
 </body>
 </html>
